@@ -11,8 +11,7 @@ import { AnswerService } from '.././answer.service';
 })
 export class NewAnswerComponent implements OnInit {
 
-	question: string = ""
-	q_id: null
+	question: any = null
 
 	newAnswer: any = {
 		answer: null,
@@ -31,7 +30,6 @@ export class NewAnswerComponent implements OnInit {
 		this._route.params.subscribe((param)=>{
 			console.log("Question ID: ", param.question_id)
 			this.newAnswer.question_id = param.question_id;
-			this.q_id = param.question_id
 		})
 	}
 
@@ -46,7 +44,7 @@ export class NewAnswerComponent implements OnInit {
 		this._questionService.serviceOneQuestion(this.newAnswer.question_id)
 			.then( foundQuestion => {
 				console.log("Found question: ", foundQuestion)
-				this.question = foundQuestion.question
+				this.question = foundQuestion
 			})
 			.catch( err => {
 				console.log(err)
