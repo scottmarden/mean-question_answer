@@ -1,0 +1,37 @@
+<!-- Login -->
+<div id="login">
+	<h4>Login</h4>
+	<form (submit)="loginUser(credentials); loginForm.reset()" #loginForm="ngForm">
+		<label for="logEmail">Email: </label><input type="email" name="logEmail" [(ngModel)]="credentials.email" #logEmail="ngModel" required />
+		<label for="logPassword">Password: </label><input type="password" name="logPassword" [(ngModel)]="credentials.password" #logPassword="ngModel" required />
+		<p class="error" *ngIf="loginErrors">Invalid Credentials</p>
+		<button [ngClass]="{green: loginForm.valid}" type="submit" [disabled]="!loginForm.valid">Login</button>
+	</form>
+</div>
+
+
+
+<!-- Registration -->
+<div id="registration">
+	<h4>Registration</h4>
+	<form (submit)="registerUser(user); regForm.reset()" #regForm="ngForm">
+		<label for="first_name">First Name: </label>
+			<input type="text" name="first_name" [(ngModel)]="user.first_name" #firstName="ngModel" required />
+				<p class="error" *ngIf="firstName.touched && !firstName.valid">First Name must be at least 2 characters long</p>
+		<label for="last_name">Last Name: </label>
+			<input type="text" name="last_name" [(ngModel)]="user.last_name" #lastName="ngModel" minlength="2" required />
+				<p class="error" *ngIf="lastName.touched && !lastName.valid">Last Name must be at least 2 characters long</p>
+		<label for="email">Email: </label>
+			<input type="email" name="email" [(ngModel)]="user.email" #email="ngModel"  pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" required />
+				<p class="error" *ngIf="email.touched && !email.valid">Please enter a valid email address</p>
+				<p class="error" *ngIf="dbErrors">That Email is already registered.</p>
+		<label for="password">Password: </label>
+			<input type="password" name="password" [(ngModel)]="user.password" #password="ngModel" minlength="8" required />
+				<p class="error" *ngIf="password.touched && !password.valid">Password must be at least  characters long</p>
+		<label for="pw_confirm">Confirm Password: </label>
+			<input type="password" name="pw_confirm" [(ngModel)]="user.pw_confirm" #pwConfirm="ngModel" minlength="8" required />
+				<p class="error" *ngIf="pwConfirm.touched && !pwConfirm.valid">Please enter your password again</p>
+				<p class="error" *ngIf="pwConfirm.touched && user.password != user.pw_confirm">Passwords do not match</p>
+		<button [ngClass]="{blue: regForm.valid}" type="submit" [disabled]="!regForm.valid">Register</button>
+	</form>
+</div>

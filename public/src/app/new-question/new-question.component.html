@@ -1,0 +1,18 @@
+<div id="header">
+	<button (click)="logout()">Logout</button>
+	<h2>New Question</h2>
+	<a [routerLink]="['/home']">Home</a>
+</div>
+
+<div id="questionForm">
+	<form (submit)="createQuestion(); questionForm.reset()" #questionForm="ngForm" >
+		<label for="question">Question: </label>
+			<textarea name="question" rows="5" cols="30" [(ngModel)]="newQuestion.question" #question="ngModel" minlength="10" required ></textarea><p class="error" *ngIf="question.touched && !question.valid">Question must be at least 10 characters long</p>
+		<label for="description">Description(optional): </label>
+			<textarea name="description" rows="5" cols="30" [(ngModel)]="newQuestion.description" #description="ngModel"></textarea>
+		<a [routerLink]="['/home']"><button>Cancel</button></a>
+		<button [ngClass]="{blue: questionForm.valid}" [disabled]="!questionForm.valid" type="submit">Submit Question</button>
+	</form>
+</div>
+
+{{ newQuestion | json }}

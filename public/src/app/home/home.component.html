@@ -1,0 +1,24 @@
+<button (click)="logout()">Logout</button>
+
+<h2>Welcome {{ user.name }}!</h2>
+
+<a [routerLink]="['/home']">Home</a>
+<a [routerLink]="['/new_question']">Add a Question</a>
+
+<div id="questionTable">
+	<table cellspacing="20">
+		<tr>
+			<th>Question</th>
+			<th>Answers</th>
+			<th>Action</th>
+		</tr>
+		<tr *ngFor="let question of questionsList">
+			<td>{{ question.question }}</td>
+			<td>{{ question.answers.length }}</td>
+			<td>
+				<a [routerLink]="['/question/', question._id]">Show</a>
+				<a [routerLink]="['/answer/', question._id]">Answer</a>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,13 @@
+<div id="header">
+	<h2>{{ question.question }}</h2>
+	<h4>{{ question.description }}</h4>
+	<a [routerLink]="['/home']">Home</a>
+	<a [routerLink]="['/answer/', question._id]">Answer this Question</a>
+</div>
+
+<div *ngFor="let answer of answers" class="answer">
+	<h5>{{ answer._user.first_name }}</h5>
+	<h4>{{ answer.answer }}</h4>
+	<p>{{ answer.details }}</p>
+	<p>Likes: {{ answer.rating }}</p><button (click)="likeAnswer(answer._id)">Like</button>
+</div>
