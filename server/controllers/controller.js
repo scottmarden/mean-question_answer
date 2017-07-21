@@ -16,7 +16,7 @@ module.exports = {
 				}
 				res.status(400).send(errors);
 			}else{
-				return res.json(savedUser);
+				res.json(savedUser);
 			}
 		} )
 	},

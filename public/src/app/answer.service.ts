@@ -11,7 +11,7 @@ export class AnswerService {
 	}
 
 	serviceGetAnswers(question_id){
-		return this._http.get('api/question_detail/' + question_id).map(response => response.json()).toPromise()
+		return this._http.get('/api/question_detail/' + question_id).map(response => response.json()).toPromise()
 	}
 
 	serviceLikeAnswer(answer_id){
