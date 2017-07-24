@@ -169,7 +169,7 @@ module.exports = {
 	},
 
 	getAnswers: (req, res) => {
-		Question.findOne({_id: req.params.question_id}).populate({path: 'answers', populate: {path: '_user'}}).exec( (err, foundQuestion) => {
+		Question.findOne({_id: req.params.question_id}).populate({path: 'answers', options:{sort: {rating: -1}}, populate: {path: '_user'}}).exec( (err, foundQuestion) => {
 			if(err){
 				let errors = [];
 				for (let x in err.errors){

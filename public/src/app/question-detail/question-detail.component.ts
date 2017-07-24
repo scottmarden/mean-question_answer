@@ -57,4 +57,9 @@ export class QuestionDetailComponent implements OnInit {
 			})
 	}
 
+	logout(){
+		localStorage.clear()
+		this._router.navigate(['/'])
+	}
+
 }

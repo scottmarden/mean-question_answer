@@ -1,9 +1,9 @@
-<button (click)="logout()">Logout</button>
-
-<h2>Welcome {{ user.name }}!</h2>
-
-<a [routerLink]="['/home']">Home</a>
-<a [routerLink]="['/new_question']">Add a Question</a>
+<div id="header">
+	<button (click)="logout()">Logout</button>
+	<h2>Welcome {{ user.name }}!</h2>
+	<a [routerLink]="['/home']">Home</a>
+	<a [routerLink]="['/new_question']">Add a Question</a>
+</div>
 
 <div id="questionTable">
 	<table cellspacing="20">
